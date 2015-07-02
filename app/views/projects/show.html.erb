@@ -1,9 +1,35 @@
-<p id="notice"><%= notice %></p>
+<h1>Project: <%= @project.name %></h1>
 
-<p>
-  <strong>Name:</strong>
-  <%= @project.name %>
-</p>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Task</th>
+      <th>Due</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @project.tasks.each do |task| %>
+      <tr>
+        <td>
+          <%= task.name %>
+        </td>
+        <td>
+          <%= task.due_at %>
+        </td>
+        <td>
+          <%= link_to "Complete", complete_project_task_path(@project, task), method: :patch unless task.completed %>
+        </td>
+        <td>
+          <%= link_to "Edit", edit_project_task_path(@project, task) %>
+        </td>
+        <td>
+          <%= link_to "Delete", project_task_path(@project, task), method: :delete %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+<%= link_to 'Add Task', new_project_task_path(@project), class: "btn btn-primary btn-md" %>
+<%= link_to "Edit #{@project.name}", edit_project_path(@project), class: "btn btn-warning btn-md" %>
+<%= link_to 'Projects List', projects_path, class: "btn btn-default btn-md" %>
