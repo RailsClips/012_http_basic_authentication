@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   namespace :api do
     get 'projects', to: "projects#index"
     get 'project_:id', to: "projects#show"
