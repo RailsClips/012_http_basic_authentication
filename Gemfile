@@ -27,3 +27,4 @@ gem "turbolinks", "~> 2.5.3"
 gem "jbuilder", "~> 2.2.16"
 gem "sdoc", "~> 0.4.1", {:group=>:doc}
 gem "twitter-bootstrap-rails", "~> 3.2.0"
+gem "rabl"

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   namespace :api do
-    get 'projects.json', to: "projects#index", format: "json"
+    get 'projects', to: "projects#index"
+    get 'project_:id', to: "projects#show"
   end
 
   root to: "projects#index"
